@@ -1,5 +1,5 @@
 {
-    "Argentyna": {
+    "Argentina": {
 		"style": {
 			"flag": ":flag_ar:",
 			"color": [16, 227, 235]
@@ -135,7 +135,7 @@
 			"Verdeada Estacionada"
 		]
 	},
-    "Brazylia": {
+    "Brazil": {
 		"style": {
 			"flag": ":flag_br:",
 			"color": [0, 173, 0]
@@ -201,7 +201,7 @@
 			"Fontana Pura Folha"		
 		]
 	},
-    "Paragwaj": {
+    "Paraguay": {
 		"style": {
 			"flag": ":flag_py:",
 			"color": [194, 2, 2]
@@ -309,7 +309,7 @@
 			"FD La Mejor Bio"
 		]
 	},
-    "Urugwaj": {
+    "Uruguay": {
 		"style": {
 			"flag": ":flag_uy:",
 			"color": [5, 2, 194]

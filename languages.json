@@ -1,15 +1,23 @@
 {
   "en": {
     "embed_title": "Random Yerba Mate",
-    "command_desc": "Send random Yerba Mate",
+    "command_desc": "Sends random Yerba Mate",
     "argument_desc": "Optional: Country of origin",
-    "argument_name": "origin"
+    "argument_name": "origin",
+    "argentina": "Argentina",
+    "brazil": "Brazil",
+    "paraguay": "Paraguay",
+    "uruguay": "Uruguay"
   },
   "pl": {
     "embed_title": "Losowa Yerba Mate",
     "command_desc": "Wysyła losową Yerba Mate",
     "argument_desc": "Opcjonalnie: Kraj z którego chcesz wylosować yerbę.",
-    "argument_name": "kraj"
+    "argument_name": "kraj",
+    "argentina": "Argentyna",
+    "brazil": "Brazylia",
+    "paraguay": "Paragwaj",
+    "uruguay": "Urugwaj"
   }
 
 

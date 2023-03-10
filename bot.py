@@ -87,12 +87,12 @@ async def get_random_yerba_by_country(country):
 @client.event
 async def on_ready():
     await tree.sync()
-    print("Bot jest gotowy")
+    print("Bot is ready")
 
 
 @tree.command(name="yerba", description=lang["command_desc"])
 @app_commands.describe(origin=lang["argument_desc"])
-@app_commands.choices(origin=[app_commands.Choice(name=key,
+@app_commands.choices(origin=[app_commands.Choice(name=lang[key.lower()],
                                                   value=key) for key in list(data)])
 @app_commands.rename(origin=lang["argument_name"])
 async def send_random_yerba(interaction, origin: Optional[app_commands.Choice[str]]):
