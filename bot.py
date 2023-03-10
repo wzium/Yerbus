@@ -81,8 +81,7 @@ async def get_random_yerba():
 
 
 async def get_random_yerba_by_country(country):
-    yerba = choice(data[country]["items"])
-    return yerba
+    return choice(data[country]["items"])
 
 
 @client.event
