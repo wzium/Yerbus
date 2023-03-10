@@ -1,7 +1,7 @@
-#Yerbuś
+# Yerbuś
 Discord bot to send random yerba mate.
 
-##Usage
+## Usage
 1. Create your bot using Discord Developer Portal
 2. Copy your bots token
 3. After you first launch the program, `config.json` will appear,\
