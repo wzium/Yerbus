@@ -1,5 +1,6 @@
 # Yerbuś
-Discord bot to send random yerba mate.
+Discord bot to send messages with random yerba mate.\
+Developed for the needs of [Yerba Mate Polska](https://discord.gg/RG7QmtDWTz) server.
 
 ## Usage
 1. Create your bot using Discord Developer Portal
