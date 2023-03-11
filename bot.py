@@ -1,6 +1,6 @@
 from json import load, decoder, dump
 from random import choice
-from typing import Optional, Dict
+from typing import Optional, Dict, Tuple, Union, List
 from os import path
 
 import discord
@@ -9,8 +9,8 @@ from datetime import datetime
 
 intents = discord.Intents.default()
 intents.message_content = True
-client = discord.Client(intents=intents, help_command=None, activity=discord.Game(name="/yerba"))
-tree = app_commands.CommandTree(client)
+client: discord.Client = discord.Client(intents=intents, help_command=None, activity=discord.Game(name="/yerba"))
+tree: app_commands.CommandTree = app_commands.CommandTree(client)
 
 
 if not path.isfile("config.json"):
@@ -24,22 +24,22 @@ if not path.isfile("config.json"):
         exit()
 
 
-def load_config():
+def load_config() -> Tuple[str, str]:
     with open("config.json") as config_file:
-        config_data = load(config_file)
-        config_token = config_data["token"]
-        config_language = config_data["lang"]
+        config_data: Dict[str, str] = load(config_file)
+        config_token: str = config_data["token"]
+        config_language: str = config_data["lang"]
         return config_token, config_language
 
 
 token, lang_code = load_config()
 
 
-def load_language(code):
+def load_language(code: str) -> Dict[str, str]:
     with open("languages.json") as lang_file:
         try:
-            lang_data = load(lang_file)
-            lang_dict = lang_data[code]
+            lang_data: Dict[str, Dict[str, str]] = load(lang_file)
+            lang_dict: Dict[str, str] = lang_data[code]
         except decoder.JSONDecodeError:
             print("languages.json file is missing!")
             exit()
@@ -52,10 +52,10 @@ def load_language(code):
 lang = load_language(lang_code)
 
 
-def load_data():
+def load_data() -> Dict[str, Dict[str, Union[Dict[str, Union[str, List[int]]], List[str]]]]:
     with open("yerba.json") as data_file:
         try:
-            yerba_data = load(data_file)
+            yerba_data: Dict[str, Dict[str, Union[Dict[str, Union[str, List[int]]], List[str]]]] = load(data_file)
         except decoder.JSONDecodeError:
             print("yerba.json file is missing!")
             exit()
@@ -65,22 +65,22 @@ def load_data():
 data = load_data()
 
 
-async def create_embed(user, country, yerba):
-    embed = discord.Embed(title=f"{lang['embed_title']} :mate:",
-                          color=discord.Color.from_rgb(*data[country]["style"]["color"]),
-                          timestamp=datetime.now(),
-                          description=f"{data[country]['style']['flag']}┇**{yerba}**")
+async def create_embed(user: discord.Interaction.user, country: str, yerba: str) -> discord.Embed:
+    embed: discord.Embed = discord.Embed(title=f"{lang['embed_title']} :mate:",
+                                         color=discord.Color.from_rgb(*data[country]["style"]["color"]),
+                                         timestamp=datetime.now(),
+                                         description=f"{data[country]['style']['flag']}┇**{yerba}**")
     embed.set_footer(text=user, icon_url=user.avatar.url)
     return embed
 
 
-async def get_random_yerba():
-    country = choice(list(data))
-    yerba = choice(data[country]["items"])
+async def get_random_yerba() -> Tuple[str, str]:
+    country: str = choice(list(data))
+    yerba: str = choice(data[country]["items"])
     return country, yerba
 
 
-async def get_random_yerba_by_country(country):
+async def get_random_yerba_by_country(country: str) -> str:
     return choice(data[country]["items"])
 
 
@@ -95,14 +95,14 @@ async def on_ready():
 @app_commands.choices(origin=[app_commands.Choice(name=lang[key.lower()],
                                                   value=key) for key in list(data)])
 @app_commands.rename(origin=lang["argument_name"])
-async def send_random_yerba(interaction, origin: Optional[app_commands.Choice[str]]):
+async def send_random_yerba(interaction: discord.Interaction, origin: Optional[app_commands.Choice[str]]):
     if not origin:
         country, yerba = await get_random_yerba()
-        embed = await create_embed(interaction.user, country, yerba)
+        embed: discord.Embed = await create_embed(interaction.user, country, yerba)
         await interaction.response.send_message(embed=embed)
         return
-    yerba = await get_random_yerba_by_country(origin.value)
-    embed = await create_embed(interaction.user, origin.value, yerba)
+    yerba: str = await get_random_yerba_by_country(origin.value)
+    embed: discord.Embed = await create_embed(interaction.user, origin.value, yerba)
     await interaction.response.send_message(embed=embed)
 
 
