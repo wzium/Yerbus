@@ -15,7 +15,7 @@ tree: app_commands.CommandTree = app_commands.CommandTree(client)
 
 if not path.isfile("config.json"):
     with open("config.json", 'w', encoding="utf-8") as new_config_file:
-        new_config_data: Dict[str, str] = {"token": "Enter your bots token from Discord Dev Portal.",
+        new_config_data: Dict[str, str] = {"token": "Enter your bot's token from Discord Dev Portal.",
                                            "lang": "Enter desired language ['pl', 'en']"}
         dump(new_config_data,
              new_config_file,

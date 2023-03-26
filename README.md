@@ -4,7 +4,7 @@ Developed for the needs of [Yerba Mate Polska](https://discord.gg/RG7QmtDWTz) se
 
 ## Usage
 1. Create your bot using Discord Developer Portal
-2. Copy your bots token
+2. Copy your bot's token
 3. After you first launch the program, `config.json` will appear,\
 find `token` and change its value
 4. Pick desired language (`en` and `pl` available for now)
