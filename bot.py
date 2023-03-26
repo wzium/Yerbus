@@ -90,6 +90,12 @@ async def on_ready():
     print("Bot is ready")
 
 
+@client.event
+async def on_message(message):
+    if client.user.mentioned_in(message):
+        await message.add_reaction("🧉")
+
+
 @tree.command(name="yerba", description=lang["command_desc"])
 @app_commands.describe(origin=lang["argument_desc"])
 @app_commands.choices(origin=[app_commands.Choice(name=lang[key.lower()],
