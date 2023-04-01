@@ -119,18 +119,21 @@ async def on_message(message):
 async def send_random_yerba(interaction: discord.Interaction,
                             origin: Optional[app_commands.Choice[str]],
                             taste: Optional[app_commands.Choice[str]]):
-    if not origin and not taste:
-        country, flavour, yerba = await get_random_yerba()
-        embed: discord.Embed = await create_embed(interaction.user, country, flavour, yerba)
-    elif origin and not taste:
-        flavour, yerba = await get_random_yerba_by_country(origin.value)
-        embed = await create_embed(interaction.user, origin.value, flavour, yerba)
-    elif not origin and taste:
-        country, yerba = await get_random_yerba_by_flavour(taste.value)
-        embed = await create_embed(interaction.user, country, taste.value, yerba)
-    else:
-        yerba = await get_random_yerba_by_country_and_flavour(origin.value, taste.value)
-        embed = await create_embed(interaction.user, origin.value, taste.value, yerba)
+
+    match bool(origin), bool(taste):
+        case False, False:
+            country, flavour, yerba = await get_random_yerba()
+            embed: discord.Embed = await create_embed(interaction.user, country, flavour, yerba)
+        case True, False:
+            flavour, yerba = await get_random_yerba_by_country(origin.value)
+            embed = await create_embed(interaction.user, origin.value, flavour, yerba)
+        case False, True:
+            country, yerba = await get_random_yerba_by_flavour(taste.value)
+            embed = await create_embed(interaction.user, country, taste.value, yerba)
+        case True, True:
+            yerba = await get_random_yerba_by_country_and_flavour(origin.value, taste.value)
+            embed = await create_embed(interaction.user, origin.value, taste.value, yerba)
+
     await interaction.response.send_message(embed=embed)
 
 
