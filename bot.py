@@ -52,10 +52,10 @@ def load_language(code: str) -> Dict[str, str]:
 lang = load_language(lang_code)
 
 
-def load_data() -> Dict[str, Dict[str, Union[Dict[str, Union[str, List[int]]], List[str]]]]:
+def load_data() -> Dict[str, Dict[str, Union[str, Dict[str, Dict[str, Dict[str, Union[str, List[int], List[str]]]]]]]]:
     with open("yerba.json") as data_file:
         try:
-            yerba_data: Dict[str, Dict[str, Union[Dict[str, Union[str, List[int]]], List[str]]]] = load(data_file)
+            yerba_data: Dict[str, Dict[str, Union[str, Dict[str, Dict[str, Dict[str, Union[str, List[int], List[str]]]]]]]] = load(data_file)
         except decoder.JSONDecodeError:
             print("yerba.json file is missing!")
             exit()
@@ -65,23 +65,34 @@ def load_data() -> Dict[str, Dict[str, Union[Dict[str, Union[str, List[int]]], L
 data = load_data()
 
 
-async def create_embed(user: discord.Interaction.user, country: str, yerba: str) -> discord.Embed:
+async def create_embed(user: discord.Interaction.user, country: str, flavour: str, yerba: str) -> discord.Embed:
     embed: discord.Embed = discord.Embed(title=f"{lang['embed_title']} :mate:",
-                                         color=discord.Color.from_rgb(*data[country]["style"]["color"]),
+                                         color=discord.Color.from_rgb(*data["countries"][country]["style"]["color"]),
                                          timestamp=datetime.now(),
-                                         description=f"{data[country]['style']['flag']}┇**{yerba}**")
+                                         description=f"{data['countries'][country]['style']['flag']}┇**{yerba} ({data['descriptors'][flavour]})**")
     embed.set_footer(text=user, icon_url=user.avatar.url)
     return embed
 
 
-async def get_random_yerba() -> Tuple[str, str]:
-    country: str = choice(list(data))
-    yerba: str = choice(data[country]["items"])
-    return country, yerba
+async def get_random_yerba() -> Tuple[str, str, str]:
+    country: str = choice(list(data["countries"]))
+    flavour: str = choice(list(data["countries"][country]["flavours"]))
+    yerba: str = choice(data["countries"][country]["flavours"][flavour])
+    return country, flavour, yerba
 
 
-async def get_random_yerba_by_country(country: str) -> str:
-    return choice(data[country]["items"])
+async def get_random_yerba_by_country(country: str) -> Tuple[str, str]:
+    flavour: str = choice(list(data["countries"][country]["flavours"]))
+    return flavour, choice(data["countries"][country]["flavours"][flavour])
+
+
+async def get_random_yerba_by_flavour(flavour: str) -> Tuple[str, str]:
+    country: str = choice(list(data["countries"]))
+    return country, choice(data["countries"][country]["flavours"][flavour])
+
+
+async def get_random_yerba_by_country_and_flavour(country: str, flavour: str) -> str:
+    return choice(data["countries"][country]["flavours"][flavour])
 
 
 @client.event
@@ -97,18 +108,29 @@ async def on_message(message):
 
 
 @tree.command(name="yerba", description=lang["command_desc"])
-@app_commands.describe(origin=lang["argument_desc"])
+@app_commands.describe(origin=lang["argument_desc_origin"],
+                       taste=lang["argument_desc_flavour"])
 @app_commands.choices(origin=[app_commands.Choice(name=lang[key.lower()],
-                                                  value=key) for key in list(data)])
-@app_commands.rename(origin=lang["argument_name"])
-async def send_random_yerba(interaction: discord.Interaction, origin: Optional[app_commands.Choice[str]]):
-    if not origin:
-        country, yerba = await get_random_yerba()
-        embed: discord.Embed = await create_embed(interaction.user, country, yerba)
-        await interaction.response.send_message(embed=embed)
-        return
-    yerba: str = await get_random_yerba_by_country(origin.value)
-    embed: discord.Embed = await create_embed(interaction.user, origin.value, yerba)
+                                                  value=key) for key in list(data["countries"])],
+                      taste=[app_commands.Choice(name=lang[key],
+                                                 value=key) for key in list(data["countries"]["Argentina"]["flavours"])])
+@app_commands.rename(origin=lang["argument_name_origin"],
+                     taste=lang["argument_name_flavour"])
+async def send_random_yerba(interaction: discord.Interaction,
+                            origin: Optional[app_commands.Choice[str]],
+                            taste: Optional[app_commands.Choice[str]]):
+    if not origin and not taste:
+        country, flavour, yerba = await get_random_yerba()
+        embed: discord.Embed = await create_embed(interaction.user, country, flavour, yerba)
+    elif origin and not taste:
+        flavour, yerba = await get_random_yerba_by_country(origin.value)
+        embed = await create_embed(interaction.user, origin.value, flavour, yerba)
+    elif not origin and taste:
+        country, yerba = await get_random_yerba_by_flavour(taste.value)
+        embed = await create_embed(interaction.user, country, taste.value, yerba)
+    else:
+        yerba = await get_random_yerba_by_country_and_flavour(origin.value, taste.value)
+        embed = await create_embed(interaction.user, origin.value, taste.value, yerba)
     await interaction.response.send_message(embed=embed)
 
 

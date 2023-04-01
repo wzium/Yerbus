@@ -2,21 +2,33 @@
     "en": {
         "embed_title": "Random Yerba Mate",
         "command_desc": "Sends random Yerba Mate",
-        "argument_desc": "Optional: Country of origin",
-        "argument_name": "origin",
+        "argument_desc_origin": "Optional: Country of origin",
+        "argument_name_origin": "origin",
+        "argument_desc_flavour": "Optional: Flavour category",
+        "argument_name_flavour": "flavour",
         "argentina": "Argentina",
         "brazil": "Brazil",
         "paraguay": "Paraguay",
-        "uruguay": "Uruguay"
+        "uruguay": "Uruguay",
+        "herbal": "Herbal",
+        "fruity": "Fruity",
+        "pure": "Pure",
+        "herbal_fruity": "Herbal & fruity"
     },
     "pl": {
         "embed_title": "Losowa Yerba Mate",
         "command_desc": "Wysyła losową Yerba Mate",
-        "argument_desc": "Opcjonalnie: Kraj z którego chcesz wylosować yerbę.",
-        "argument_name": "kraj",
+        "argument_desc_origin": "Opcjonalnie: Kraj z którego chcesz wylosować yerbę.",
+        "argument_name_origin": "kraj",
+        "argument_desc_flavour": "Opcjonalnie: Kategoria smakowa",
+        "argument_name_flavour": "smak",
         "argentina": "Argentyna",
         "brazil": "Brazylia",
         "paraguay": "Paragwaj",
-        "uruguay": "Urugwaj"
+        "uruguay": "Urugwaj",
+        "herbal": "Ziołowa",
+        "fruity": "Owocowa",
+        "pure": "Bez dodatków",
+        "herbal_fruity": "Ziołowo-owocowa"
     }
 }
