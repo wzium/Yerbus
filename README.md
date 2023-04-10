@@ -17,7 +17,7 @@ See [requirements.txt](requirements.txt).
 ## Screenshots
 ![bot](https://i.imgur.com/4pqTLr7.png)
 
-![output](https://i.imgur.com/bJ8Va5E.png)
+![output](https://i.imgur.com/umMIKj1.png)
 
 ![command](https://i.imgur.com/Q0PZlG8.png)
 
