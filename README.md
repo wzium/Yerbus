@@ -17,10 +17,12 @@ See [requirements.txt](requirements.txt).
 ## Screenshots
 ![bot](https://i.imgur.com/4pqTLr7.png)
 
-![output](https://i.imgur.com/BgRDU2l.png)
+![output](https://i.imgur.com/bJ8Va5E.png)
 
-![command](https://i.imgur.com/B5ktmdb.png)
+![command](https://i.imgur.com/Q0PZlG8.png)
 
-![argument](https://i.imgur.com/mcB9SuF.png)
+![argument](https://i.imgur.com/SgVcEGH.png)
 
 ![options](https://i.imgur.com/cGbOQt8.png)
+
+![options2](https://i.imgur.com/I4VcRDG.png)
