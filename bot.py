@@ -25,7 +25,7 @@ if not path.isfile("config.json"):
 
 
 def load_config() -> Tuple[str, str]:
-    with open("config.json") as config_file:
+    with open("config.json", encoding="UTF-8") as config_file:
         config_data: Dict[str, str] = load(config_file)
         config_token: str = config_data["token"]
         config_language: str = config_data["lang"]
@@ -36,7 +36,7 @@ token, lang_code = load_config()
 
 
 def load_language(code: str) -> Dict[str, str]:
-    with open("languages.json") as lang_file:
+    with open("languages.json", encoding="UTF-8") as lang_file:
         try:
             lang_data: Dict[str, Dict[str, str]] = load(lang_file)
             lang_dict: Dict[str, str] = lang_data[code]
@@ -53,7 +53,7 @@ lang = load_language(lang_code)
 
 
 def load_data() -> Dict[str, Dict[str, Union[str, Dict[str, Dict[str, Dict[str, Union[str, List[int], List[str]]]]]]]]:
-    with open("yerba.json") as data_file:
+    with open("yerba.json", encoding="UTF-8") as data_file:
         try:
             yerba_data: Dict[str, Dict[str, Union[str, Dict[str, Dict[str, Dict[str, Union[str, List[int], List[str]]]]]]]] = load(data_file)
         except decoder.JSONDecodeError:
@@ -101,10 +101,57 @@ async def on_ready():
     print("Bot is ready")
 
 
+dialogs: Dict[Tuple, Tuple[str, bool]] = {
+    ("badA1", "badA2", "badA3", "badA4"): ("bad_replyA", True),
+    ("badB1", "badB2", "badB3", "badB4"): ("bad_replyB", True),
+
+    ("ownedA1", "ownedA2"): ("owned_replyA", False),
+    ("ownedB1", "ownedB2"): ("owned_replyB", True),
+    ("ownedC1", "ownedC2", "ownedC3", "ownedC4"): ("owned_replyC", True),
+    ("ownedD1", "ownedD2", "ownedD3", "ownedD4"): ("owned_replyD", False),
+    ("ownedE1", "ownedE2"): ("owned_replyE", False),
+
+    ("drinkingA1", "drinkingA2", "drinkingA3"): ("drinking_replyA", False),
+    ("drinkingB1", "drinkingB2"): ("drinking_replyB", False),
+    ("drinkingC1", "drinkingC2", "drinkingC3"): ("drinking_replyC", False),
+
+    ("plannedA1", "plannedA2", "plannedA3"): ("planned_replyA", False),
+    ("plannedB1", "plannedB2"): ("planned_replyB", False),
+    ("plannedC1", "plannedC2", "plannedC3"): ("planned_replyC", False),
+    ("plannedD1", "plannedD2", "plannedD3"): ("planned_replyD", True)
+}
+
+
+async def reply_to_user(message):
+    for user_message_tuple in dialogs:
+        translated_tuple = tuple(map(lambda m: lang[m].lower(), user_message_tuple))
+        if message.content.lower() in translated_tuple:
+            if dialogs[user_message_tuple][1]:
+                embed = await create_embed(message.author, *await get_random_yerba())
+                await message.reply(lang[dialogs[user_message_tuple][0]], embed=embed)
+                return
+
+            await message.reply(lang[dialogs[user_message_tuple][0]])
+
+
+async def get_referenced_message(message):
+    if not message.reference.cached_message:
+        channel = client.get_channel(message.reference.channel_id)
+        return await channel.fetch_message(message.reference.message_id)
+
+    return message.reference.cached_message
+
+
 @client.event
 async def on_message(message):
     if client.user.mentioned_in(message):
         await message.add_reaction("🧉")
+
+    if message.reference:
+        msg = await get_referenced_message(message)
+
+        if msg.author == client.user and msg.embeds:
+            await reply_to_user(message)
 
 
 @tree.command(name="yerba", description=lang["command_desc"])

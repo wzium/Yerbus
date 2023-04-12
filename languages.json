@@ -2,33 +2,177 @@
     "en": {
         "embed_title": "Random Yerba Mate",
         "command_desc": "Sends random Yerba Mate",
+
         "argument_desc_origin": "Optional: Country of origin",
         "argument_name_origin": "origin",
         "argument_desc_flavour": "Optional: Flavour category",
         "argument_name_flavour": "flavour",
+
         "argentina": "Argentina",
         "brazil": "Brazil",
         "paraguay": "Paraguay",
         "uruguay": "Uruguay",
+
         "herbal": "Herbal",
         "fruity": "Fruity",
         "pure": "Pure",
-        "herbal_fruity": "Herbal & fruity"
+        "herbal_fruity": "Herbal & fruity",
+
+        "badA1": "Worst Mate I've ever had",
+        "badA2": "Not this one",
+        "badA3": "Awful",
+        "badA4": "I wouldn't recommend it",
+        "bad_replyA": "I'm so sorry. I didn't know you didn't like it :cry: I'm sending a new one!",
+
+        "badB1": "I've had it many times and I don't like it",
+        "badB2": "I can't warm to this one",
+        "badB3": "It's mid",
+        "badB4": "I've had better",
+        "bad_replyB": "Hmm.. then this one might be to your liking :wink:",
+
+        "ownedA1": "I've had it",
+        "ownedA2": "I've already tried it",
+        "owned_replyA": "And how did you like it?",
+
+        "ownedB1": "I've had it yesterday",
+        "ownedB2": "One of my favourite",
+        "owned_replyB": "Supposedly very good, I personally haven't tried it yet :sweat_smile: And what's your opinion on this one?",
+
+        "ownedC1": "Awesome Paraguayan Yerba",
+        "ownedC2": "Awesome Argentinian Yerba",
+        "ownedC3": "Awesome Uruguayan Yerba",
+        "ownedC4": "Awesome Brazilian Yerba",
+        "owned_replyC": "And what's your opinion on this one?",
+
+        "ownedD1": "Yerbus, I already have this one!",
+        "ownedD2": "Yerbus, I already had it",
+        "ownedD3": "Yerbus, send something different",
+        "ownedD4": "I already have this one",
+        "owned_replyD": "Would you recommend it?",
+
+        "ownedE1": "I just ordered it",
+        "ownedE2": "Ordered it right now",
+        "owned_replyE": "Now I finally know what to drink!",
+
+        "drinkingA1": "Slurping it today",
+        "drinkingA2": "I'm just drinking it",
+        "drinkingA3": "Drinking it right now",
+        "drinking_replyA": "Do you like it?",
+
+        "drinkingB1": "I am just preparing it",
+        "drinkingB2": "I was thinking about preparing it right now",
+        "drinking_replyB": "Don't forget to share your impressions with us :heart:",
+
+        "drinkingC1": "I already have it in my mate",
+        "drinkingC2": "I have it in my mate today",
+        "drinkingC3": "I am currently slurping it",
+        "drinking_replyC": "Share a pic!",
+
+        "plannedA1": "I was just thinking about trying it",
+        "plannedA2": "I have to try it",
+        "plannedA3": "I will try it today",
+        "planned_replyA": "What are you waiting for? I heard many good reviews about it!",
+
+        "plannedB1": "I always wanted to try it",
+        "plannedB2": "It must be good since so many people drink it",
+        "planned_replyB": "You should try it :innocent:",
+
+        "plannedC1": "I will add it to the list",
+        "plannedC2": "I have it on my list",
+        "plannedC3": "Someday I will order it",
+        "planned_replyC": "What are you waiting for? Get it :sunglasses:",
+
+        "plannedD1": "Already planned to get it",
+        "plannedD2": "I'm getting it next time",
+        "plannedD3": "Getting it for sure",
+        "planned_replyD": "How about adding this one to your cart?"
     },
     "pl": {
         "embed_title": "Losowa Yerba Mate",
         "command_desc": "Wysyła losową Yerba Mate",
+
         "argument_desc_origin": "Opcjonalnie: Kraj z którego chcesz wylosować yerbę.",
         "argument_name_origin": "kraj",
         "argument_desc_flavour": "Opcjonalnie: Kategoria smakowa",
         "argument_name_flavour": "smak",
+
         "argentina": "Argentyna",
         "brazil": "Brazylia",
         "paraguay": "Paragwaj",
         "uruguay": "Urugwaj",
+
         "herbal": "Ziołowa",
         "fruity": "Owocowa",
         "pure": "Bez dodatków",
-        "herbal_fruity": "Ziołowo-owocowa"
+        "herbal_fruity": "Ziołowo-owocowa",
+
+        "badA1": "Najgorsza Yerba jaką piłem",
+        "badA2": "Tylko nie ta",
+        "badA3": "Ohydna",
+        "badA4": "Nie polecam jej nikomu",
+        "bad_replyA": "Oj, przepraszam, nie wiedziałem że Ci nie smakuje :cry: Już losuję nową!",
+
+        "badB1": "Piłem niejednokrotnie i mi nie smakuje",
+        "badB2": "Nie mogę się do niej przekonać",
+        "badB3": "Mocna średniawka",
+        "badB4": "Są lepsze",
+        "bad_replyB": "Hmm.. w takim razie może ta trafi w Twój gust :wink:",
+
+        "ownedA1": "Piłem już",
+        "ownedA2": "Już ją piłem",
+        "owned_replyA": "I jak Ci smakowała?",
+
+        "ownedB1": "Piłem ją wczoraj",
+        "ownedB2": "Jedna z moich ulubionych",
+        "owned_replyB": "Ponoć bardzo dobra, osobiście jeszcze nie próbowałem :sweat_smile: A jakie masz zdanie o tej?",
+
+        "ownedC1": "Świetna Paragwajka",
+        "ownedC2": "Świetna Argentynka",
+        "ownedC3": "Świetna Urugwajka",
+        "ownedC4": "Świetna Brazylijka",
+        "owned_replyC": "A co powiesz o tej?",
+
+        "ownedD1": "Yerbuś, już ją mam!",
+        "ownedD2": "Yerbuś, ją już piłem",
+        "ownedD3": "Yerbuś, daj coś innego",
+        "ownedD4": "Już ją mam",
+        "owned_replyD": "I jak, polecasz innym?",
+
+        "ownedE1": "Właśnie zamówiłem",
+        "ownedE2": "Właśnie ją zamówiłem",
+        "owned_replyE": "To już wiem co będzie pite!",
+
+        "drinkingA1": "Siorbię ją dziś",
+        "drinkingA2": "Właśnie ją piję",
+        "drinkingA3": "Piję ją właśnie",
+        "drinking_replyA": "I co, smaczna?",
+
+        "drinkingB1": "Właśnie ją przygotowuję",
+        "drinkingB2": "Właśnie miałem ją robić",
+        "drinking_replyB": "Nie zapomnij podzielić się z nami wrażeniami :heart:",
+
+        "drinkingC1": "Mam ją dziś w matero",
+        "drinkingC2": "Mam ją dziś w mate",
+        "drinkingC3": "Właśnie ją siorbię",
+        "drinking_replyC": "Podziel się fotką!",
+
+        "plannedA1": "Właśnie chciałem jej spróbować",
+        "plannedA2": "Muszę jej spróbować",
+        "plannedA3": "Dziś jej spróbuję",
+        "planned_replyA": "To na co czekasz? Słyszałem wiele opinii, że jest bardzo dobra!",
+
+        "plannedB1": "Zawsze chciałem jej spróbować",
+        "plannedB2": "Musi być dobra skoro tak dużo osób ją pije",
+        "planned_replyB": "Zachęcam do spróbowania :innocent:",
+
+        "plannedC1": "Dodam ją do listy",
+        "plannedC2": "Mam ją na swojej liście",
+        "plannedC3": "Kiedyś ją zamówię",
+        "planned_replyC": "Na co czekasz? Zamawiaj :sunglasses:",
+
+        "plannedD1": "Czeka już w kolejce",
+        "plannedD2": "Wpadnie przy następnych zakupach",
+        "plannedD3": "Będzie zamawiana",
+        "planned_replyD": "A może dodasz do koszyka jeszcze tę?"
     }
 }
