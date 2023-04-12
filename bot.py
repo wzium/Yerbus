@@ -103,12 +103,12 @@ async def on_ready():
 
 dialogs: Dict[Tuple, Tuple[str, bool]] = {
     ("badA1", "badA2", "badA3", "badA4"): ("bad_replyA", True),
-    ("badB1", "badB2", "badB3", "badB4"): ("bad_replyB", True),
+    ("badB1", "badB2", "badB3", "badB4", "badB5"): ("bad_replyB", True),
 
     ("ownedA1", "ownedA2"): ("owned_replyA", False),
     ("ownedB1", "ownedB2"): ("owned_replyB", True),
     ("ownedC1", "ownedC2", "ownedC3", "ownedC4"): ("owned_replyC", True),
-    ("ownedD1", "ownedD2", "ownedD3", "ownedD4"): ("owned_replyD", False),
+    ("ownedD1", "ownedD2", "ownedD3"): ("owned_replyD", False),
     ("ownedE1", "ownedE2"): ("owned_replyE", False),
 
     ("drinkingA1", "drinkingA2", "drinkingA3"): ("drinking_replyA", False),

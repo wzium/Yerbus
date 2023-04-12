@@ -28,6 +28,7 @@
         "badB2": "I can't warm to this one",
         "badB3": "It's mid",
         "badB4": "I've had better",
+        "badB5": "Yerbus, send something different",
         "bad_replyB": "Hmm.. then this one might be to your liking :wink:",
 
         "ownedA1": "I've had it",
@@ -46,8 +47,7 @@
 
         "ownedD1": "Yerbus, I already have this one!",
         "ownedD2": "Yerbus, I already had it",
-        "ownedD3": "Yerbus, send something different",
-        "ownedD4": "I already have this one",
+        "ownedD3": "I already have this one",
         "owned_replyD": "Would you recommend it?",
 
         "ownedE1": "I just ordered it",
@@ -116,6 +116,7 @@
         "badB2": "Nie mogę się do niej przekonać",
         "badB3": "Mocna średniawka",
         "badB4": "Są lepsze",
+        "badB5": "Yerbuś, daj coś innego",
         "bad_replyB": "Hmm.. w takim razie może ta trafi w Twój gust :wink:",
 
         "ownedA1": "Piłem już",
@@ -134,8 +135,7 @@
 
         "ownedD1": "Yerbuś, już ją mam!",
         "ownedD2": "Yerbuś, ją już piłem",
-        "ownedD3": "Yerbuś, daj coś innego",
-        "ownedD4": "Już ją mam",
+        "ownedD3": "Już ją mam",
         "owned_replyD": "I jak, polecasz innym?",
 
         "ownedE1": "Właśnie zamówiłem",
