@@ -70,7 +70,7 @@ async def create_embed(user: discord.Interaction.user, country: str, flavour: st
                                          color=discord.Color.from_rgb(*data["countries"][country]["style"]["color"]),
                                          timestamp=datetime.now(),
                                          description=f"{data['countries'][country]['style']['flag']}┇**{yerba} ({data['descriptors'][flavour]})**")
-    embed.set_footer(text=user, icon_url=user.avatar.url if user.avatar else user.default_avatar.url)
+    embed.set_footer(text=user.name, icon_url=user.avatar.url if user.avatar else user.default_avatar.url)
     return embed
 
 
